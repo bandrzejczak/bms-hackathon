@@ -1,4 +1,6 @@
 # bms-hackathon
+### Prerequisites
+JDK 8
 
 ### Getting started
 1. Clone this repo

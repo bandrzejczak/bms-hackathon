@@ -1,4 +1,4 @@
 ---
 default_process_types:
-  web: ./gradlew run
+  web: java -jar build/libs/* --server.port=$PORT
 

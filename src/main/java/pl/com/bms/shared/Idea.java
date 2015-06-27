@@ -3,6 +3,7 @@ package pl.com.bms.shared;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 /**
  * Created by mateusz on 27.06.15.
@@ -59,5 +60,18 @@ public class Idea {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Idea idea = (Idea) o;
+        return Objects.equals(id, idea.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

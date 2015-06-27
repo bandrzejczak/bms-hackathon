@@ -12,7 +12,7 @@ class EventMailerTest extends Specification {
     def resourceLoader = Mock(ResourceLoader)
     def emailSender = Mock(EmailSender)
 
-    def eventConsumer = new EventMailer(eventBus, resourceLoader, emailSender)
+    def eventMailer = new EventMailer(eventBus, resourceLoader, emailSender)
 
     class TestEvent {
         public String firstVariable;
@@ -29,7 +29,7 @@ class EventMailerTest extends Specification {
 
     def "should not send an e-mail when neither subject not body are available"() {
         when:
-        eventConsumer.onEvent(new TestEvent())
+        eventMailer.onEvent(new TestEvent())
 
         then:
         0 * emailSender.sendEmail(_, _)
@@ -40,7 +40,7 @@ class EventMailerTest extends Specification {
         resourceLoader.getResource("classpath:email/TestEvent-body.txt") >> createResource("Some body")
 
         when:
-        eventConsumer.onEvent(new TestEvent())
+        eventMailer.onEvent(new TestEvent())
 
         then:
         0 * emailSender.sendEmail(_, _)
@@ -51,7 +51,7 @@ class EventMailerTest extends Specification {
         resourceLoader.getResource("classpath:email/TestEvent-subject.txt") >> createResource("Some subject")
 
         when:
-        eventConsumer.onEvent(new TestEvent())
+        eventMailer.onEvent(new TestEvent())
 
         then:
         0 * emailSender.sendEmail(_, _)
@@ -63,7 +63,7 @@ class EventMailerTest extends Specification {
         resourceLoader.getResource("classpath:email/TestEvent-body.txt") >> createResource("Some body")
 
         when:
-        eventConsumer.onEvent(new TestEvent())
+        eventMailer.onEvent(new TestEvent())
 
         then:
         1 * emailSender.sendEmail("Some subject", "Some body")
@@ -75,7 +75,7 @@ class EventMailerTest extends Specification {
         resourceLoader.getResource("classpath:email/TestEvent-body.txt") >> createResource("Body {{firstVariable}} {{secondVariable}}")
 
         when:
-        eventConsumer.onEvent(new TestEvent(firstVariable: "aaa", secondVariable: "bbb"))
+        eventMailer.onEvent(new TestEvent(firstVariable: "aaa", secondVariable: "bbb"))
 
         then:
         1 * emailSender.sendEmail("Subject aaa", "Body aaa bbb")

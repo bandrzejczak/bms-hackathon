@@ -31,6 +31,6 @@ class CommentsController {
    @RequestMapping(value = "/{ideaID}/comments", method = RequestMethod.POST)
    public String addComment(@PathVariable String ideaID, @ModelAttribute Comment comment, Map<String, Object> model) {
        commentsService.save(ideaID, comment);
-       return "redirect:comments";
+       return "redirect:/ideadetails";
    }
 }

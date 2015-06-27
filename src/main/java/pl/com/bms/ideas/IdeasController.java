@@ -26,8 +26,9 @@ class IdeasController {
     }
 
     @RequestMapping("/idea")
-    public String idea(Map<String, String> model) {
-        return "idea";
+    public String idea(Map<String, Object> model) {
+        model.put("ideaList", ideaRepo.findAll());
+        return "listIdeas";
     }
 
     @RequestMapping(value="/idea/add", method=RequestMethod.POST)
@@ -40,12 +41,6 @@ class IdeasController {
         model.put("title", idea.getTitle());
         model.put("description", idea.getDescription());
         return "ideaAdded";
-    }
-
-    @RequestMapping("/idea/list")
-    public String ideasList(Map<String, Object> model) {
-        model.put("ideaList", ideaRepo.findAll());
-        return "listIdeas";
     }
 
     @RequestMapping("/ideadetails")

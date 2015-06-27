@@ -21,12 +21,12 @@ class CommentsController {
         this.commentsService = commentsService;
     }
 
-   @RequestMapping(value = "/{ideaID}/comments", method = RequestMethod.GET)
-   public String listComments(@PathVariable String ideaID, Map<String, Object> model) {
-      model.put("comments", commentsService.getAllFor(ideaID));
-      model.put("ideaID", ideaID);
-      return "comments";
-   }
+    @RequestMapping(value = "/{ideaID}/comments", method = RequestMethod.GET)
+    public String listComments(@PathVariable String ideaID, Map<String, Object> model) {
+        model.put("comments", commentsService.getAllFor(ideaID));
+        model.put("ideaID", ideaID);
+        return "comments";
+    }
 
    @RequestMapping(value = "/{ideaID}/comments", method = RequestMethod.POST)
    public String addComment(@PathVariable String ideaID, @ModelAttribute Comment comment, Map<String, Object> model) {

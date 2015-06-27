@@ -19,18 +19,18 @@ public class VotesController {
         return "votes";
     }
 
-    @RequestMapping(path = "/{ideaID}/votelike", method = RequestMethod.POST)
-    public String voteLike(@PathVariable String ideaID, Map<String, Object> model) {
+    @RequestMapping(path = "/{ideaID}/votelike", method = RequestMethod.GET)
+    public String voteLike(@PathVariable String ideaID) {
         return "votes";
     }
 
-    @RequestMapping(path = "/{ideaID}/votehate", method = RequestMethod.POST)
-    public String voteHate(@PathVariable String ideaID, Map<String, Object> model) {
+    @RequestMapping(path = "/{ideaID}/votehate", method = RequestMethod.GET)
+    public String voteHate(@PathVariable String ideaID) {
         return "votes";
     }
 
-    @RequestMapping(path = "/{ideaID}/voteclear", method = RequestMethod.POST)
-    public String voteClear(@PathVariable String ideaID, Map<String, Object> model) {
+    @RequestMapping(path = "/{ideaID}/voteclear", method = RequestMethod.GET)
+    public String voteClear(@PathVariable String ideaID) {
         return "votes";
     }
 

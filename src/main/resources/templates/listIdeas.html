@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <table class="table">
+                <div class="media">
+                <ul >
+                    {{#ideaList}}
+                    <div class="media">
+                        <div class="media-left media-top">
+                                <div class="form-inline">
+                                    <img class="media-object" onclick="javascript:upVoteThisIdea({{id}});"
+                                         src="/images/like.png" >
+                                    <span class="label label-success label-as-badge" style="color: @brand-success;">10</span>
+
+                                    <img class="media-object" onclick="javascript:downVoteThisIdea({{id}});"
+                                         src="/images/hate.png" >
+                                    <span class="label label-danger label-as-badge" style="color: @brand-success;">12</span>
+                                </div>
+                        </div>
+                        <div class="media-body form-control">
+                            <h4 class="media-heading">{{title}}</h4>
+                            <h4 class="media-heading"><small>Autor: {{author}}</small></h4>
+                            {{description}}
+                        </div>
+                    </div>
+                    {{/ideaList}}
+                </ul>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+function upVoteThisIdea(ideaId) {
+	$.get( "/" + ideaId + "/votelike", function( data ) {});
+}
+function downVoteThisIdea(ideaId) {
+	$.get( "/" + ideaId + "/votehate", function( data ) {});
+}
+</script>
+</html>

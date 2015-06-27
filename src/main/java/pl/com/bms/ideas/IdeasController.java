@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.com.bms.event.EventDispatcher;
 import pl.com.bms.event.IdeaCreated;
 import pl.com.bms.shared.Idea;
+import pl.com.bms.shared.IdeaRepository;
 
 import java.util.Map;
 
@@ -13,6 +14,9 @@ import java.util.Map;
 class IdeasController {
 
     private final EventDispatcher eventDispatcher;
+
+    @Autowired
+    private IdeaRepository chooseIdeaRepo;
 
     @Autowired
     public IdeasController(final EventDispatcher eventDispatcher) {
@@ -36,4 +40,11 @@ class IdeasController {
 
         return "ideaAdded";
     }
+
+    @RequestMapping("/idea/list")
+    public String ideasList(Map<String, Object> model) {
+        model.put("ideaList", chooseIdeaRepo.findAll());
+        return "listIdeas";
+    }
+
 }

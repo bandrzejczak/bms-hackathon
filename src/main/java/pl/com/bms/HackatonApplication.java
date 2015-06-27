@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
+import java.util.concurrent.Executors;
+
 @SpringBootApplication
 public class HackatonApplication {
 
@@ -17,7 +19,7 @@ public class HackatonApplication {
 
     @Bean
     public EventBus eventBus() {
-        return new EventBus();
+        return new AsyncEventBus(Executors.newSingleThreadExecutor());
     }
 
     @Bean

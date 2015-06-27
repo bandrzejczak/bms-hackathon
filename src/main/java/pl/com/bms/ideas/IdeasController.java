@@ -2,8 +2,8 @@ package pl.com.bms.ideas;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pl.com.bms.model.Idea;
 
-import javax.activation.MimeType;
 import java.util.Map;
 
 /**

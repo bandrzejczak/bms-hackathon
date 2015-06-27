@@ -1,20 +1,21 @@
-package pl.com.bms.ideas;
+package pl.com.bms.model;
 
 /**
  * Created by mateusz on 27.06.15.
  */
 public class Idea {
+    private String id;
     private String author;
     private String title;
     private String description;
+    private boolean approved;
 
-    public Idea(String author, String title, String description) {
+    public Idea(String id, String author, String title, String description) {
+        this.id = id;
         this.author = author;
         this.title = title;
         this.description = description;
-    }
-
-    public Idea() {
+        this.approved = false;
     }
 
     public String getAuthor() {

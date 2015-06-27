@@ -32,11 +32,10 @@ public class EventMailer {
     }
 
     @Subscribe
-    public void onEvent(final Object event) {
+    public void handleEvent(final Object event) {
         final String eventName = event.getClass().getSimpleName();
-
-        final String subjectTemplate = resourceToString(resourceLoader.getResource(subjectResourceName(eventName)));
-        final String bodyTemplate = resourceToString(resourceLoader.getResource(bodyResourceName(eventName)));
+        final String subjectTemplate = resourceToString(loadResource(subjectResourceName(eventName)));
+        final String bodyTemplate = resourceToString(loadResource(bodyResourceName(eventName)));
 
         if (subjectTemplate == null) return;
         if (bodyTemplate == null) return;
@@ -53,6 +52,10 @@ public class EventMailer {
 
     private String bodyResourceName(final String eventName) {
         return "classpath:email/" + eventName + "-body.txt";
+    }
+
+    private Resource loadResource(final String resourceName) {
+        return resourceLoader.getResource(resourceName);
     }
 
     private String resourceToString(final Resource resource) {

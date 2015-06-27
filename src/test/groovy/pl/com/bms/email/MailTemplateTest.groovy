@@ -15,7 +15,7 @@ class MailTemplateTest extends Specification {
 
     def "should correctly use template and send an e-mail for a set of events"() {
         when:
-        eventMailer.onEvent(event)
+        eventMailer.handleEvent(event)
 
         then:
         1 * emailSender.sendEmail(_, _)

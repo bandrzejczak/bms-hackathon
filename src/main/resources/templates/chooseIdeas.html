@@ -11,34 +11,30 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
-        <div class="container">
-            <h2>Zaakceptuj pomysł</h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Author</th>
-                    <th>Select</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr {{#ideaList}}>
-                    <td>{{title}}</td>
-                    <td>{{description}}</td>
-                    <td>{{author}}</td>
-                    {{# approved}}{{/approved}}
-                    {{^ approved}}
-                    <td>
-                        <button onClick="chooseThisIdea({{id}})">Approve</button>
-                    </td>
-                    {{/approved}}
-                </tr {{/ideaList}}>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <h1>Zaakceptuj pomysł</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Select</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr {{#ideaList}}>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{author}}</td>
+            {{# approved}}{{/approved}}
+            {{^ approved}}
+            <td>
+                <button onClick="chooseThisIdea({{id}})">Approve</button>
+            </td>
+            {{/approved}}
+        </tr {{/ideaList}}>
+        </tbody>
+    </table>
 </div>
 </body>
 <script>

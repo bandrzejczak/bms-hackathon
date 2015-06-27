@@ -1,13 +1,32 @@
+html {
+    height: 100%;
+}
+
 body {
     font-size: 15px;
+    background: url('/images/background.png');
 }
 
 .container {
-    max-width: 45%;
-    margin-top: 50px;
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+    box-sizing: border-box;
+
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+
+    /*text-align: center;*/
+    font-weight: normal;
+    font-size: 17px;
+    color: #666;
 }
 
-.jumbotron h1 {
+.container h1 {
     text-align: center;
     font-size: 300%;
     margin-bottom: 30px;

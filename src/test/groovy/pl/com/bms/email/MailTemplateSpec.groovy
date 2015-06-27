@@ -7,7 +7,6 @@ import pl.com.bms.event.IdeaCreated
 import pl.com.bms.event.IdeaDownvoted
 import pl.com.bms.event.IdeaUpvoted
 import pl.com.bms.shared.Idea
-import spock.lang.Shared
 import spock.lang.Specification
 
 class MailTemplateSpec extends Specification {
@@ -15,7 +14,7 @@ class MailTemplateSpec extends Specification {
     def emailSender = Mock(EmailSender)
     def eventMailer = new EventMailer(Mock(EventBus), new ClassRelativeResourceLoader(getClass()), emailSender)
 
-    static idea = new Idea(null, "Tytuł", "Opis", "Autor")
+    static idea = new Idea("Autor", "Tytuł", "Opis")
 
     def "should correctly use template and send an e-mail for a set of events"() {
         when:

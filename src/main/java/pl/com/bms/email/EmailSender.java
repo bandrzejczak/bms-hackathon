@@ -18,7 +18,7 @@ public class EmailSender {
     private String mailFrom;
     private String mailTo;
 
-    private WebResource webResource;
+    WebResource webResource;
 
     @Autowired
     public EmailSender(@Value("${mailgun.url}") final String mailgunUrl,

@@ -8,11 +8,13 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class DoodleInfo {
 
     private static final String COUNTRY_CODE = "PL";
     private static final String COUNTRY_LOCALE = "pl_PL";
+
     private final String title;
     private final String creator;
     private final String creatorEmail;
@@ -27,7 +29,7 @@ public abstract class DoodleInfo {
         this.options = options;
     }
 
-    public Doodle createDoodle(){
+    public CompletableFuture<Doodle> createDoodle(){
         return new DoodleFacade().createDoodle(this);
     }
 

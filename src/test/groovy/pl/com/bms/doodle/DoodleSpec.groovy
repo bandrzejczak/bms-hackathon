@@ -18,7 +18,7 @@ class DoodleSpec extends Specification {
                         "Banan",
                         "Jabłko"
                 ]
-        ).createDoodle()
+        ).createDoodle().get()
 
         then:
         doodle != null
@@ -37,7 +37,7 @@ class DoodleSpec extends Specification {
                         LocalDate.now().plusDays(1L),
                         LocalDate.now().plusDays(2L)
                 ]
-        ).createDoodle()
+        ).createDoodle().get()
 
         then:
         doodle != null
@@ -56,7 +56,7 @@ class DoodleSpec extends Specification {
                         LocalDateTime.now().plusHours(12L),
                         LocalDateTime.now().plusDays(1L)
                 ]
-        ).createDoodle()
+        ).createDoodle().get()
 
         then:
         doodle != null

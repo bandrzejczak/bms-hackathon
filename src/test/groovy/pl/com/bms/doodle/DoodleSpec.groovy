@@ -5,7 +5,7 @@ import spock.lang.Specification
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-class HttpClientSpec extends Specification {
+class DoodleSpec extends Specification {
 
     def "should create doodle for texts"(){
         when:

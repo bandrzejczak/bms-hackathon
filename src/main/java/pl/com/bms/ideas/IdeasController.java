@@ -43,15 +43,11 @@ class IdeasController {
         return "ideaAdded";
     }
 
-    @RequestMapping("/ideadetails")
-    public String showIdeaDetails(Map<String, Object> model) {
-        Idea idea = getSomeIdea();
+    @RequestMapping("/ideadetails/{ideaId}")
+    public String showIdeaDetails(@PathVariable String ideaId, Map<String, Object> model) {
+        Idea idea = ideaRepo.findOne(ideaId);
         model.put("comments", commentsService.getAllFor(idea.getId()));
         model.put("idea", idea);
         return "ideadetails";
-    }
-
-    private Idea getSomeIdea() {
-        return ideaRepo.findAll().iterator().next();
     }
 }

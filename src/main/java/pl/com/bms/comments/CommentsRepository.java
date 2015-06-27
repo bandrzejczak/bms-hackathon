@@ -1,5 +1,7 @@
 package pl.com.bms.comments;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -12,22 +14,18 @@ import static java.util.Collections.unmodifiableList;
 
 @Repository
 public class CommentsRepository {
-    private List<Comment> comments;
+    private ListMultimap<String, Comment> comments;
 
     public CommentsRepository() {
-        comments = new ArrayList<>();
-        comments.add(new Comment(new Author("Zenon"), LocalDateTime.now(), "Message here"));
+        comments = ArrayListMultimap.create();;
+        comments.put("111", new Comment("Message here"));
     }
 
-    public void add(Comment comment) {
-        comments.add(comment);
+    public void add(String ideaID, Comment comment) {
+        comments.put(ideaID, comment);
     }
 
-    public int size() {
-        return comments.size();
-    }
-
-    public List<Comment> getAll() {
-        return unmodifiableList(comments);
+    public List<Comment> getAllFor(String ideaId) {
+        return comments.get(ideaId);
     }
 }

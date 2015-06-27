@@ -13,7 +13,7 @@ public class CommentAddingTest {
         //given
         CommentsRepository commentRepository = new CommentsRepository();
         //when
-        Comment comment = new Comment();
+        Comment comment = new Comment(null, null, null);
         commentRepository.add(comment);
         //then
         assertThat(commentRepository.size()).isEqualTo(1);

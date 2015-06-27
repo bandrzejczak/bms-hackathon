@@ -12,6 +12,13 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Comments:</h1>
+
+        {{#comments}}
+            Author: {{author.name}}
+            Date: {{datePosted}}
+            Message: {{message}}
+        {{/comments}}
+
     </div>
 </div>
 </body>

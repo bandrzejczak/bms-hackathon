@@ -1,43 +1,52 @@
 package pl.com.bms.doodle;
 
-import com.google.gson.Gson;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoodleInfo {
+public abstract class DoodleInfo {
 
-    public Doodle createDoodle(){
-        HttpClient httpClient = HttpClients.createDefault();
-        DoodleResponse doodleResponse;
-        try {
-            HttpPost createDoodleRequest = new HttpPost("http://doodle.com/np/new-polls/");
-            List<NameValuePair> parameters = new ArrayList<>();
-            parameters.add(new BasicNameValuePair("title", "dupa"));
-            parameters.add(new BasicNameValuePair("initiatorAlias", "dupa"));
-            parameters.add(new BasicNameValuePair("initiatorEmail", "dupa@wp.pl"));
-            parameters.add(new BasicNameValuePair("optionsMode", "text"));
-            parameters.add(new BasicNameValuePair("options[]", "Lasagne"));
-            parameters.add(new BasicNameValuePair("options[]", "Pizza"));
-            parameters.add(new BasicNameValuePair("type", "TEXT"));
-            parameters.add(new BasicNameValuePair("country", "PL"));
-            parameters.add(new BasicNameValuePair("locale", "pl_PL"));
-            createDoodleRequest.setEntity(new UrlEncodedFormEntity(parameters, "utf-8"));
-            InputStream content = httpClient.execute(createDoodleRequest).getEntity().getContent();
-            doodleResponse = new Gson().fromJson(new InputStreamReader(content), DoodleResponse.class);
-        } catch (IOException e) {
-            throw new RuntimeException();
-        }
-        return new Doodle(doodleResponse.id, doodleResponse.adminKey);
+    private static final String COUNTRY_CODE = "PL";
+    private static final String COUNTRY_LOCALE = "pl_PL";
+    private final String title;
+    private final String creator;
+    private final String creatorEmail;
+    private final DoodleType type;
+    private final List<String> options;
+
+    DoodleInfo(String title, String creator, String creatorEmail, DoodleType type, List<String> options) {
+        this.title = title;
+        this.creator = creator;
+        this.creatorEmail = creatorEmail;
+        this.type = type;
+        this.options = options;
     }
 
+    public Doodle createDoodle(){
+        return new DoodleFacade().createDoodle(this);
+    }
+
+    HttpEntity toHtmlEntity() {
+        List<NameValuePair> parameters = new ArrayList<>();
+        parameters.add(new BasicNameValuePair("title", title));
+        parameters.add(new BasicNameValuePair("initiatorAlias", creator));
+        parameters.add(new BasicNameValuePair("initiatorEmail", creatorEmail));
+        parameters.add(new BasicNameValuePair("optionsMode", type.mode));
+        parameters.add(new BasicNameValuePair("type", type.type));
+        options.forEach(
+            option -> parameters.add(new BasicNameValuePair("options[]", option))
+        );
+        parameters.add(new BasicNameValuePair("country", COUNTRY_CODE));
+        parameters.add(new BasicNameValuePair("locale", COUNTRY_LOCALE));
+        try {
+            return new UrlEncodedFormEntity(parameters, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException();
+        }
+    }
 }

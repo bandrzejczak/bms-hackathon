@@ -14,7 +14,10 @@ class EventMailerTest extends Specification {
 
     def eventConsumer = new EventMailer(eventBus, resourceLoader, emailSender)
 
-    class TestEvent { }
+    class TestEvent {
+        public String firstVariable;
+        public String secondVariable;
+    }
 
     def "should register with the event bus"() {
         when:
@@ -66,8 +69,19 @@ class EventMailerTest extends Specification {
         1 * emailSender.sendEmail("Some subject", "Some body")
     }
 
+    def "should replace parameter values in subject and body"() {
+        given:
+        resourceLoader.getResource("classpath:email/TestEvent-subject.txt") >> createResource("Subject {{firstVariable}}")
+        resourceLoader.getResource("classpath:email/TestEvent-body.txt") >> createResource("Body {{firstVariable}} {{secondVariable}}")
+
+        when:
+        eventConsumer.onEvent(new TestEvent(firstVariable: "aaa", secondVariable: "bbb"))
+
+        then:
+        1 * emailSender.sendEmail("Subject aaa", "Body aaa bbb")
+    }
+
     private Resource createResource(final String text) {
         new ByteArrayResource(new String(text).getBytes("utf-8"))
     }
-
 }

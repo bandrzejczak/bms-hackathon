@@ -1,1 +1,1 @@
-BMS Hackathon: Oddano pozytywny głos na pomysł {{event.ideaTitle}}
+BMS Hackathon: Oddano pozytywny głos na pomysł "{{ideaTitle}}"

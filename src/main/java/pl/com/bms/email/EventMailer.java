@@ -3,6 +3,7 @@ package pl.com.bms.email;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.io.CharStreams;
+import com.samskivert.mustache.Mustache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -17,6 +18,7 @@ public class EventMailer {
 
     private final ResourceLoader resourceLoader;
     private final EmailSender emailSender;
+    private final Mustache.Compiler compiler = Mustache.compiler();
 
     @Autowired
     public EventMailer(final EventBus eventBus,
@@ -33,11 +35,14 @@ public class EventMailer {
     public void onEvent(final Object event) {
         final String eventName = event.getClass().getSimpleName();
 
-        final String subject = resourceToString(resourceLoader.getResource(subjectResourceName(eventName)));
-        final String body = resourceToString(resourceLoader.getResource(bodyResourceName(eventName)));
+        final String subjectTemplate = resourceToString(resourceLoader.getResource(subjectResourceName(eventName)));
+        final String bodyTemplate = resourceToString(resourceLoader.getResource(bodyResourceName(eventName)));
 
-        if (subject == null) return;
-        if (body == null) return;
+        if (subjectTemplate == null) return;
+        if (bodyTemplate == null) return;
+
+        final String subject = replaceVariables(subjectTemplate, event);
+        final String body = replaceVariables(bodyTemplate, event);
 
         emailSender.sendEmail(subject, body);
     }
@@ -59,5 +64,9 @@ public class EventMailer {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    private String replaceVariables(final String template, final Object event) {
+        return compiler.compile(template).execute(event);
     }
 }

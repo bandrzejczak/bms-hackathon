@@ -1,1 +1,1 @@
-BMS Hackathon: Utworzono nowy pomysł {{event.ideaTitle}}
+BMS Hackathon: Utworzono nowy pomysł "{{ideaTitle}}"

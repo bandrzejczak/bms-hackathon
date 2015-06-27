@@ -4,9 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/**
- * Created by mateusz on 27.06.15.
- */
 @Entity
 public class Idea {
 
@@ -60,12 +57,11 @@ public class Idea {
         this.description = description;
     }
 
-	public void setApproved(boolean approved) {
-		this.approved = approved;
-	}
+    public void approve() {
+        this.approved = true;
+    }
 
 	public boolean isApproved() {
 		return approved;
 	}
-    
 }

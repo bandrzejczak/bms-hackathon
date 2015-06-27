@@ -3,45 +3,49 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/jquery/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron">
-            <div class="container">
-			  <table class="table">
-			    <thead>
-			      <tr>
-			        <th>Name</th>
-			        <th>Description</th>
-			        <th>Author</th>
-			        <th>Select</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr {{#ideaList}}>
-			        <td>{{title}}</td>
-			        <td>{{description}}</td>
-			        <td>{{author}}</td>
-			        {{# approved}}{{/approved}}
-			        {{^ approved}}
-			        	<td><button  onClick="chooseThisIdea({{id}})">Approve</button></td>
-			        {{/approved}}
-			      </tr {{/ideaList}}>
-			    </tbody>
-			  </table>
-			</div>
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Zaakceptuj pomysł</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Select</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr {{#ideaList}}>
+                    <td>{{title}}</td>
+                    <td>{{description}}</td>
+                    <td>{{author}}</td>
+                    {{# approved}}{{/approved}}
+                    {{^ approved}}
+                    <td>
+                        <button onClick="chooseThisIdea({{id}})">Approve</button>
+                    </td>
+                    {{/approved}}
+                </tr {{/ideaList}}>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </body>
 <script>
-function chooseThisIdea(ideaId) {
-	console.log(ideaId);
-	$.get( "/chooseIdea/" + ideaId, function( data ) {});
-}
+    function chooseThisIdea(ideaId) {
+        console.log(ideaId);
+        $.get("/chooseIdea/" + ideaId, function (data) {
+        });
+    }
 </script>
 </html>

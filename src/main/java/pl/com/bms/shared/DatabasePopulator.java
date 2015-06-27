@@ -25,8 +25,7 @@ public class DatabasePopulator implements ApplicationListener<ContextRefreshedEv
         if(!populated) {
             IntStream.range(0, 10).forEach(
                   i -> repo.save(
-                        new Idea(UUID.randomUUID().toString(),
-                              "author_test",
+                        new Idea("author_test",
                               "test_" + i,
                               "description_" + i))
             );

@@ -1,13 +1,15 @@
 package pl.com.bms.chooseIdeas;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.com.bms.shared.IdeaRepository;
 
-import java.util.Map;
+import pl.com.bms.shared.Idea;
+import pl.com.bms.shared.IdeaRepository;
 
 
 @Controller
@@ -24,8 +26,11 @@ class ChooseIdeaController {
    
    
    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-   public void chooseTheBestIdea(@PathVariable Long id) {
-	   System.out.println("ID: " + id);
+   public String chooseTheBestIdea(@PathVariable String id) {
+	   Idea idea = chooseIdeaRepo.findOne(id);
+	   idea.setApproved(true);
+	   chooseIdeaRepo.save(idea);
+	   return "redirect:";
    }
    
 }

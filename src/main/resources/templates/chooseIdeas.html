@@ -27,7 +27,10 @@
 			        <td>{{title}}</td>
 			        <td>{{description}}</td>
 			        <td>{{author}}</td>
-			        <td><button onClick="chooseThisIdea({{id}})">Select</button></td>
+			        {{# approved}}{{/approved}}
+			        {{^ approved}}
+			        	<td><button  onClick="chooseThisIdea({{id}})">Approve</button></td>
+			        {{/approved}}
 			      </tr {{/ideaList}}>
 			    </tbody>
 			  </table>
@@ -38,6 +41,7 @@
 <script>
 function chooseThisIdea(ideaId) {
 	console.log(ideaId);
+	$.get( "/chooseIdea/" + ideaId, function( data ) {});
 }
 </script>
 </html>

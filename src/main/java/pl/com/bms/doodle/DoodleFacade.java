@@ -23,7 +23,7 @@ class DoodleFacade {
                 HttpResponse response = httpClient.execute(createDoodleRequest);
                 return getEntity(response, Doodle.class);
             } catch (IOException e) {
-                throw new RuntimeException();
+                throw new DoodleCreationException();
             }
         });
     }

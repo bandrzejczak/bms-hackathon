@@ -11,20 +11,26 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>Comments for idea {{ideaID}}:</h1>
-        {{#comments}}
-            Date: {{datePosted}}
-            Message: {{message}}
-        {{/comments}}
+
+        <h2>Add comment</h2>
+        <form id="addComment" action="comments" method="POST">
+            <div class="input-group">
+                <input type="text" name="message" class="form-control" placeholder="Your comment...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Submit!</button>
+            </span>
+            </div><!-- /input-group -->
+        </form>
         <hr />
-        <h2>Add your own comment</h2>
-
-
-    <form id="addComment" action="comments" method="POST">
-        <input name="message" type="text" id="message"><label for="message">Comment:</label>
-        <input type="submit" value="Submit">
-    </form>
-
+        <h2>Comments for idea {{ideaID}}:</h2>
+        {{#comments}}
+            <div class="panel panel-info">
+                <div class="panel-heading">Date: {{datePosted}}</div>
+                <div class="panel-body">
+                    {{message}}
+                </div>
+            </div>
+        {{/comments}}
 </div>
 </div>
 </body>

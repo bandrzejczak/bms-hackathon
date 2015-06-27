@@ -4,20 +4,15 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
-import static java.util.Collections.unmodifiableList;
+import java.util.stream.Collectors;
 
 @Repository
 public class CommentsRepository {
     private ListMultimap<String, Comment> comments;
 
     public CommentsRepository() {
-        comments = ArrayListMultimap.create();;
+        comments = ArrayListMultimap.create();
         comments.put("111", new Comment("Message here"));
     }
 
@@ -26,6 +21,8 @@ public class CommentsRepository {
     }
 
     public List<Comment> getAllFor(String ideaId) {
-        return comments.get(ideaId);
+        return comments.get(ideaId).stream()
+                .sorted((e1, e2) -> e2.datePosted.compareTo(e1.datePosted))
+                .collect(Collectors.toList());
     }
 }

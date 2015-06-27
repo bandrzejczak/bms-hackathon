@@ -1,7 +1,7 @@
 Witaj,
 
-W aplikacji "BMS Hackathon" oddany został nowy negatywny głos na pomysł "{{event.ideaTitle}}".
-Głos ten został oddany przez "{{event.voter}}".
+W aplikacji "BMS Hackathon" oddany został nowy negatywny głos na pomysł "{{ideaTitle}}".
+Głos ten został oddany przez "{{voter}}".
 
 Zachęcamy do dalszego głosowania pomysłami.
 

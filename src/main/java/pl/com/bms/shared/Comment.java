@@ -1,4 +1,4 @@
-package pl.com.bms.comments;
+package pl.com.bms.shared;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.com.bms.event.EventDispatcher;
 import pl.com.bms.event.IdeaCreated;
+import pl.com.bms.shared.CommentsService;
 import pl.com.bms.shared.Idea;
 import pl.com.bms.shared.IdeaRepository;
 
@@ -15,11 +16,13 @@ class IdeasController {
 
     private final EventDispatcher eventDispatcher;
     private final IdeaRepository ideaRepo;
+    private final CommentsService commentsService;
 
     @Autowired
-    public IdeasController(final EventDispatcher eventDispatcher, IdeaRepository ideaRepo) {
+    public IdeasController(final EventDispatcher eventDispatcher, IdeaRepository ideaRepo, CommentsService commentsService) {
         this.eventDispatcher = eventDispatcher;
         this.ideaRepo = ideaRepo;
+        this.commentsService = commentsService;
     }
 
     @RequestMapping("/idea")
@@ -45,4 +48,15 @@ class IdeasController {
         return "listIdeas";
     }
 
+    @RequestMapping("/ideadetails")
+    public String showIdeaDetails(Map<String, Object> model) {
+        Idea idea = getSomeIdea();
+        model.put("comments", commentsService.getAllFor(idea.getId()));
+        model.put("idea", idea);
+        return "ideadetails";
+    }
+
+    private Idea getSomeIdea() {
+        return ideaRepo.findAll().iterator().next();
+    }
 }

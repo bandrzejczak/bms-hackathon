@@ -1,11 +1,11 @@
 Witaj,
 
-W aplikacji "BMS Hackathon" utworzony został nowy pomysł "{{ideaTitle}}".
-Jego autorem jest "{{ideaAuthor}}".
+W aplikacji "BMS Hackathon" utworzony został nowy pomysł "{{idea.title}}".
+Jego autorem jest "{{idea.author}}".
 
 Wprowadzony został następujacy opis tego pomysłu:
 ***
-{{ideaDescription}}
+{{idea.description}}
 ***
 
 Zachęcamy do głosowania nad tym pomysłem.

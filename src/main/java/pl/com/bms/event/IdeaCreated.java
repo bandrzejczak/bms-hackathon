@@ -1,14 +1,12 @@
 package pl.com.bms.event;
 
+import pl.com.bms.shared.Idea;
+
 public class IdeaCreated {
 
-    public final String ideaTitle;
-    public final String ideaDescription;
-    public final String ideaAuthor;
+    public final Idea idea;
 
-    public IdeaCreated(final String ideaTitle, final String ideaDescription, final String ideaAuthor) {
-        this.ideaTitle = ideaTitle;
-        this.ideaDescription = ideaDescription;
-        this.ideaAuthor = ideaAuthor;
+    public IdeaCreated(final Idea idea) {
+        this.idea = idea;
     }
 }

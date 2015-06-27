@@ -1,6 +1,6 @@
 Witaj,
 
-W aplikacji "BMS Hackathon" oddany został nowy pozytywny głos na pomysł "{{ideaTitle}}".
+W aplikacji "BMS Hackathon" oddany został nowy pozytywny głos na pomysł "{{idea.title}}".
 Głos ten został oddany przez "{{voter}}".
 
 Zachęcamy do dalszego głosowania pomysłami.

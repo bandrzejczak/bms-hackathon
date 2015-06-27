@@ -1,0 +1,14 @@
+Witaj,
+
+W aplikacji "BMS Hackathon" utworzony zostal nowy pomysl "{{event.ideaTitle}}".
+Jego autorem jest "{{event.ideaAuthor}}".
+
+Wprowadzony zostal nastepujacy opis tego pomyslu:
+***
+{{event.ideaDescription}}
+***
+
+Zachecamy do glosowania nad tym pomyslem.
+
+Z uszanowaniem,
+Aplikacja BMS Hackathon

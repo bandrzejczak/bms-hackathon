@@ -25,7 +25,7 @@ class IdeasController {
         this.commentsService = commentsService;
     }
 
-    @RequestMapping("/idea")
+    @RequestMapping(value = {"/", "/idea"})
     public String idea(Map<String, Object> model) {
         model.put("ideaList", ideaRepo.findAll());
         return "listIdeas";

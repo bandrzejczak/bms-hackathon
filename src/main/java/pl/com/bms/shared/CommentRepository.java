@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, String> {
-    List<Comment> findByIdeaID(String ideaID);
+    List<Comment> findByIdeaIDOrderByDatePostedDesc(String ideaID);
 }

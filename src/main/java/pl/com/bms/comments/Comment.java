@@ -61,7 +61,4 @@ public class Comment {
         this.message = message;
     }
 
-    public int compareByPostedDate(Comment other) {
-        return this.datePosted.compareTo(other.datePosted);
-    }
 }

@@ -7,7 +7,6 @@ import pl.com.bms.comments.Comment;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 public class CommentsService {
@@ -27,8 +26,6 @@ public class CommentsService {
     }
 
     public List<Comment> getAllFor(String ideaID) {
-        return repo.findByIdeaID(ideaID).stream()
-                .sorted((e1, e2) -> e2.compareByPostedDate(e1))
-                .collect(Collectors.toList());
+        return repo.findByIdeaIDOrderByDatePostedDesc(ideaID);
     }
 }

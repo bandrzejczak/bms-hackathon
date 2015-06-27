@@ -1,0 +1,14 @@
+Witaj,
+
+W aplikacji "BMS Hackathon" dodany został nowy komentarz do pomysłu "{{event.ideaTitle}}".
+Autorem komentarza jest "{{event.commentAuthor}}".
+
+Treść komentarza:
+***
+{{event.commentText}}
+***
+
+Zachęcamy do dalszego komentowania pomysłów.
+
+Z uszanowaniem,
+Aplikacja BMS Hackathon

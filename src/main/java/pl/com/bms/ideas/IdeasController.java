@@ -2,7 +2,7 @@ package pl.com.bms.ideas;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.com.bms.model.Idea;
+import pl.com.bms.shared.Idea;
 
 import java.util.Map;
 

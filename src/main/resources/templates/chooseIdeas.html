@@ -18,13 +18,15 @@
 			      <tr>
 			        <th>Name</th>
 			        <th>Description</th>
+			        <th>Author</th>
 			        <th>Select</th>
 			      </tr>
 			    </thead>
 			    <tbody>
 			      <tr {{#ideaList}}>
-			        <td>{{name}}</td>
+			        <td>{{title}}</td>
 			        <td>{{description}}</td>
+			        <td>{{author}}</td>
 			        <td><button onClick="chooseThisIdea({{id}})">Select</button></td>
 			      </tr {{/ideaList}}>
 			    </tbody>

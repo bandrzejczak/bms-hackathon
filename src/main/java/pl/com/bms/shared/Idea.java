@@ -1,9 +1,17 @@
-package pl.com.bms.model;
+package pl.com.bms.shared;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by mateusz on 27.06.15.
  */
+@Entity
 public class Idea {
+
+    @Id
+    @GeneratedValue
     private String id;
     private String author;
     private String title;
@@ -16,6 +24,17 @@ public class Idea {
         this.title = title;
         this.description = description;
         this.approved = false;
+    }
+
+    public Idea() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getAuthor() {

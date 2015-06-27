@@ -1,6 +1,7 @@
 package pl.com.bms.eventTest
 
 import pl.com.bms.event.EventDispatcher
+import pl.com.bms.event.IdeaCommented
 import pl.com.bms.event.IdeaCreated
 import pl.com.bms.event.IdeaDownvoted
 import pl.com.bms.event.IdeaUpvoted
@@ -17,6 +18,14 @@ class EventTestControllerTest extends Specification {
 
         then:
         1 * eventDispatcher.dispatch({ event -> event instanceof IdeaCreated })
+    }
+
+    def "should dispatch an IdeaCommented event"() {
+        when:
+        eventTestController.dispatchIdeaCommented()
+
+        then:
+        1 * eventDispatcher.dispatch({ event -> event instanceof IdeaCommented })
     }
 
     def "should dispatch an IdeaUpvoted event"() {

@@ -3,12 +3,10 @@ package pl.com.bms.eventTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.com.bms.event.EventDispatcher;
-import pl.com.bms.event.IdeaCreated;
-import pl.com.bms.event.IdeaDownvoted;
-import pl.com.bms.event.IdeaUpvoted;
+import pl.com.bms.event.*;
 
 @Controller
+@RequestMapping("/eventTest")
 public class EventTestController {
 
     private static final String CONFIRMATION_PAGE = "eventTestConfirmation";
@@ -20,19 +18,25 @@ public class EventTestController {
         this.eventDispatcher = eventDispatcher;
     }
 
-    @RequestMapping("/eventTest/dispatchIdeaCreated")
+    @RequestMapping("/dispatchIdeaCreated")
     public String dispatchIdeaCreated() {
         eventDispatcher.dispatch(new IdeaCreated("Koszenie trawnika", "Koszenie trawnika raz w miesiącu", "Ogrodnik"));
         return CONFIRMATION_PAGE;
     }
 
-    @RequestMapping("/eventTest/dispatchIdeaUpvoted")
+    @RequestMapping("/dispatchIdeaCommented")
+    public String dispatchIdeaCommented() {
+        eventDispatcher.dispatch(new IdeaCommented("Koszenie trawnika", "Koszenie trawnika raz w miesiącu", "Ogrodnik", "Moim zdaniem nie trzeba go kosić", "Ekspert Ogrodnictwa"));
+        return CONFIRMATION_PAGE;
+    }
+
+    @RequestMapping("/dispatchIdeaUpvoted")
     public String dispatchIdeaUpvoted() {
         eventDispatcher.dispatch(new IdeaUpvoted("Koszenie trawnika", "Koszenie trawnika raz w miesiącu", "Ogrodnik", "Pomocnik ogrodnika"));
         return CONFIRMATION_PAGE;
     }
 
-    @RequestMapping("/eventTest/dispatchIdeaDownvoted")
+    @RequestMapping("/dispatchIdeaDownvoted")
     public String dispatchIdeaDownvoted() {
         eventDispatcher.dispatch(new IdeaDownvoted("Koszenie trawnika", "Koszenie trawnika raz w miesiącu", "Ogrodnik", "Natalia"));
         return CONFIRMATION_PAGE;

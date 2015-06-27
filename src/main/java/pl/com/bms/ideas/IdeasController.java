@@ -14,13 +14,12 @@ import java.util.Map;
 class IdeasController {
 
     private final EventDispatcher eventDispatcher;
+    private final IdeaRepository ideaRepo;
 
     @Autowired
-    private IdeaRepository chooseIdeaRepo;
-
-    @Autowired
-    public IdeasController(final EventDispatcher eventDispatcher) {
+    public IdeasController(final EventDispatcher eventDispatcher, IdeaRepository ideaRepo) {
         this.eventDispatcher = eventDispatcher;
+        this.ideaRepo = ideaRepo;
     }
 
     @RequestMapping("/idea")
@@ -31,19 +30,18 @@ class IdeasController {
     @RequestMapping(value="/idea/add", method=RequestMethod.POST)
     public String addIdea(@ModelAttribute Idea idea,
                           Map<String, String> model) {
-
+        ideaRepo.save(idea);
         eventDispatcher.dispatch(new IdeaCreated(idea));
 
         model.put("author", idea.getAuthor());
         model.put("title", idea.getTitle());
         model.put("description", idea.getDescription());
-
         return "ideaAdded";
     }
 
     @RequestMapping("/idea/list")
     public String ideasList(Map<String, Object> model) {
-        model.put("ideaList", chooseIdeaRepo.findAll());
+        model.put("ideaList", ideaRepo.findAll());
         return "listIdeas";
     }
 

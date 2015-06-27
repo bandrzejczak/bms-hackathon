@@ -11,7 +11,25 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1>{{idea.title}}</h1>
+        <h2>Idea details:</h2>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">{{idea.title}}</div>
+            <div class="panel-body">
+                <p>{{idea.description}}</p>
+            </div>
+
+            <!-- List group -->
+            <ul class="list-group">
+                <li class="list-group-item">By: {{idea.author}}</li>
+                {{#idea.approved}}
+                <li class="list-group-item list-group-item-success">Approved</li>
+                {{/idea.approved}}
+                {{^idea.approved}}
+                <li class="list-group-item list-group-item-warning">Pending approval</li>
+                {{/idea.approved}}
+            </ul>
+        </div>
     </div>
 </div>
 </body>

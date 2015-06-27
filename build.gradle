@@ -9,7 +9,6 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
         classpath("io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE")
-        classpath("org.ajoberstar:gradle-git:1.2.0")
     }
 }
 
@@ -80,17 +79,3 @@ stage.mustRunAfter(clean)
 clean << {
     project.file('app.jar').delete()
 }
-
-task generateGitProperties {
-    def repo = org.ajoberstar.grgit.Grgit.open(project.file('.'))
-    def lastCommit = repo.head()
-
-    def gitProps = new File("src/main/resources/git.properties")
-    gitProps.createNewFile()
-    gitProps.text = """\
-        git.commit.id = ${lastCommit.id}
-        git.commit.time = ${new Date(lastCommit.time * 1000L).format("yyyy-MM-dd' 'HH:mm:ssZ")}
-        git.branch = ${repo.branch.current.name}
-        """.stripIndent()
-}
-project.tasks.jar.dependsOn('generateGitProperties')

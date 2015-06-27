@@ -25,10 +25,10 @@ class IdeasController {
         this.commentsService = commentsService;
     }
 
-    @RequestMapping(value = {"/", "/idea"})
-    public String idea(Map<String, Object> model) {
+    @RequestMapping(value = {"/", "/idea", "/ideas"})
+    public String listIdeas(Map<String, Object> model) {
         model.put("ideaList", ideaRepo.findAll());
-        return "listIdeas";
+        return "ideasList";
     }
 
     @RequestMapping(value="/idea/add", method=RequestMethod.POST)
@@ -40,14 +40,14 @@ class IdeasController {
         model.put("author", idea.getAuthor());
         model.put("title", idea.getTitle());
         model.put("description", idea.getDescription());
-        return "ideaAdded";
+        return "redirect:/idea/" + idea.getId();
     }
 
-    @RequestMapping("/ideadetails/{ideaId}")
+    @RequestMapping("/idea/{ideaId}")
     public String showIdeaDetails(@PathVariable String ideaId, Map<String, Object> model) {
         Idea idea = ideaRepo.findOne(ideaId);
         model.put("comments", commentsService.getAllFor(idea.getId()));
         model.put("idea", idea);
-        return "ideadetails";
+        return "ideaDetails";
     }
 }

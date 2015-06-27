@@ -17,19 +17,19 @@ class ChooseIdeaController {
 
    @Autowired private IdeaRepository ideaRepository;
 	
-   @RequestMapping(value="/chooseIdea", method= GET)
-   public String chooseIdea(Map<String, Object> model) {
+   @RequestMapping(value="/approvals", method= GET)
+   public String approvalsPage(Map<String, Object> model) {
 	   model.put("ideaList", ideaRepository.findAll());
-	   return "chooseIdeas";
+	   return "ideasApprovalPage";
    }
    
    
-   @RequestMapping(value = "/chooseIdea/{ideaId}", method = GET)
-   public String chooseTheBestIdea(@PathVariable String ideaId) {
+   @RequestMapping(value = "/idea/{ideaId}/approve", method = GET)
+   public String approveIdea(@PathVariable String ideaId) {
 	   Idea idea = ideaRepository.findOne(ideaId);
 	   idea.approve();
 	   ideaRepository.save(idea);
-	   return "redirect:";
+	   return "redirect:/approvals";
    }
    
 }

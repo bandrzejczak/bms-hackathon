@@ -1,13 +1,12 @@
 package pl.com.bms.email
 
-import com.sun.jersey.api.client.ClientResponse
 import com.sun.jersey.api.client.WebResource
 import spock.lang.Specification
 
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.MultivaluedMap
 
-class EmailSenderTest extends Specification {
+class EmailSenderSpec extends Specification {
 
     def "sendEmail should POST to webResource according to the mailgun API"() {
         given:

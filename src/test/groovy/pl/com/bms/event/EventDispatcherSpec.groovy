@@ -3,7 +3,7 @@ package pl.com.bms.event
 import com.google.common.eventbus.EventBus
 import spock.lang.Specification
 
-class EventDispatcherTest extends Specification {
+class EventDispatcherSpec extends Specification {
 
     def eventBus = Mock(EventBus)
     def eventDispatcher = new EventDispatcher(eventBus)

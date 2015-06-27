@@ -10,7 +10,7 @@ import pl.com.bms.shared.Idea
 import spock.lang.Shared
 import spock.lang.Specification
 
-class MailTemplateTest extends Specification {
+class MailTemplateSpec extends Specification {
 
     def emailSender = Mock(EmailSender)
     def eventMailer = new EventMailer(Mock(EventBus), new ClassRelativeResourceLoader(getClass()), emailSender)

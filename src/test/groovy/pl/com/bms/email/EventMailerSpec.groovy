@@ -6,7 +6,7 @@ import org.springframework.core.io.Resource
 import org.springframework.core.io.ResourceLoader
 import spock.lang.Specification
 
-class EventMailerTest extends Specification {
+class EventMailerSpec extends Specification {
 
     def eventBus = Mock(EventBus)
     def resourceLoader = Mock(ResourceLoader)

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.com.bms.shared.Comment;
-import pl.com.bms.shared.CommentsService;
+import pl.com.bms.comment.Comment;
+import pl.com.bms.comment.CommentsService;
 
 import java.util.Map;
 

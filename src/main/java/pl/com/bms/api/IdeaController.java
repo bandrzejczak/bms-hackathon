@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.com.bms.idea.IdeaService;
-import pl.com.bms.shared.CommentsService;
+import pl.com.bms.comment.CommentsService;
 import pl.com.bms.idea.Idea;
 
 import java.util.Map;

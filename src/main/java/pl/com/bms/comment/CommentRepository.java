@@ -1,4 +1,4 @@
-package pl.com.bms.shared;
+package pl.com.bms.comment;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

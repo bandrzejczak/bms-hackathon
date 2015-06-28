@@ -1,4 +1,4 @@
-package pl.com.bms.shared;
+package pl.com.bms.comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

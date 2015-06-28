@@ -1,6 +1,6 @@
 package pl.com.bms.event;
 
-import pl.com.bms.shared.Idea;
+import pl.com.bms.idea.Idea;
 
 public class IdeaUpvoted {
 

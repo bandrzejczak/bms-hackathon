@@ -1,6 +1,6 @@
 package pl.com.bms.vote;
 
-import pl.com.bms.shared.Idea;
+import pl.com.bms.idea.Idea;
 
 import java.util.*;
 

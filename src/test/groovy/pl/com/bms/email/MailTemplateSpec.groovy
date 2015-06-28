@@ -6,7 +6,7 @@ import pl.com.bms.event.IdeaCommented
 import pl.com.bms.event.IdeaCreated
 import pl.com.bms.event.IdeaDownvoted
 import pl.com.bms.event.IdeaUpvoted
-import pl.com.bms.shared.Idea
+import pl.com.bms.idea.Idea
 import spock.lang.Specification
 
 class MailTemplateSpec extends Specification {

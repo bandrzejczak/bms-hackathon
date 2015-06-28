@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.com.bms.shared.Idea;
-import pl.com.bms.shared.IdeaRepository;
+import pl.com.bms.idea.Idea;
+import pl.com.bms.idea.IdeaRepository;
 
 import java.util.Map;
 

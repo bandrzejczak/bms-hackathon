@@ -1,4 +1,4 @@
-package pl.com.bms.shared;
+package pl.com.bms.idea;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

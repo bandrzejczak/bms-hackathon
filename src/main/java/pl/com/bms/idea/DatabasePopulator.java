@@ -1,12 +1,12 @@
-package pl.com.bms.shared;
+package pl.com.bms.idea;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.stereotype.Component;
+import pl.com.bms.idea.Idea;
+import pl.com.bms.idea.IdeaRepository;
 
-import java.util.UUID;
 import java.util.stream.IntStream;
 
 @Component

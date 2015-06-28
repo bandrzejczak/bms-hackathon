@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import pl.com.bms.event.EventDispatcher;
 import pl.com.bms.event.IdeaApproved;
 import pl.com.bms.event.IdeaCreated;
-import pl.com.bms.shared.Idea;
-import pl.com.bms.shared.IdeaRepository;
 
 @Service
 public class IdeaService {

@@ -3,12 +3,9 @@ package pl.com.bms.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.com.bms.event.EventDispatcher;
-import pl.com.bms.event.IdeaCreated;
 import pl.com.bms.idea.IdeaService;
 import pl.com.bms.shared.CommentsService;
-import pl.com.bms.shared.Idea;
-import pl.com.bms.shared.IdeaRepository;
+import pl.com.bms.idea.Idea;
 
 import java.util.Map;
 

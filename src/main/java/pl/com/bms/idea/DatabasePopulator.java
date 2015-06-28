@@ -23,11 +23,11 @@ public class DatabasePopulator implements ApplicationListener<ContextRefreshedEv
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if(!populated) {
-            IntStream.range(0, 10).forEach(
+            IntStream.range(0, 3).forEach(
                   i -> repo.save(
-                        new Idea("author_test",
-                              "test_" + i,
-                              "description_" + i))
+                        new Idea("Zenon",
+                              "Hackathon nr " + i,
+                              "description " + i))
             );
             populated = true;
         }

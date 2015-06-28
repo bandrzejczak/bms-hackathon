@@ -30,6 +30,6 @@ class IdeaApprovalController {
     @RequestMapping(value = "/idea/{ideaId}/approve", method = GET)
     public String approveIdea(@PathVariable String ideaId) {
         ideas.approveIdea(ideaId);
-        return "redirect:/approvals";
+        return Redirection.toApprovals().asString();
     }
 }

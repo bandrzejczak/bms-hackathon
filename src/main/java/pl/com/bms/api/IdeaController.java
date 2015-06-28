@@ -38,7 +38,7 @@ class IdeaController {
         model.put("author", createdIdea.getAuthor());
         model.put("title", createdIdea.getTitle());
         model.put("description", createdIdea.getDescription());
-        return "redirect:/idea/" + createdIdea.getId();
+        return Redirection.toIdeaDetails(createdIdea.getId()).asString();
     }
 
     @RequestMapping("/idea/{ideaId}")

@@ -1,4 +1,4 @@
-package pl.com.bms.comments;
+package pl.com.bms.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,16 +15,16 @@ import java.util.Map;
 @Controller
 class CommentsController {
 
-    private CommentsService commentsService;
+    private final CommentsService commentsService;
 
     @Autowired
     public CommentsController(CommentsService commentsService) {
         this.commentsService = commentsService;
     }
 
-   @RequestMapping(value = "/idea/{ideaID}/comments/add", method = RequestMethod.POST)
-   public String addComment(@PathVariable String ideaID, @ModelAttribute Comment comment, Map<String, Object> model) {
-       commentsService.save(ideaID, comment);
-       return "redirect:/idea/" + ideaID;
-   }
+    @RequestMapping(value = "/idea/{ideaID}/comments/add", method = RequestMethod.POST)
+    public String addComment(@PathVariable String ideaID, @ModelAttribute Comment comment, Map<String, Object> model) {
+        commentsService.save(ideaID, comment);
+        return Redirection.toIdeaDetails(ideaID).asString();
+    }
 }

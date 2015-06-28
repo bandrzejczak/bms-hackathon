@@ -11,13 +11,15 @@
                             <div class="form-inline">
                                 <img class="media-object" onclick="javascript:upVoteThisIdea({{id}});"
                                      src="/images/like.png">
-                                    <span class="label label-success label-as-badge"
-                                          style="color: @brand-success;">10</span>
+                                    <span id="upvote_{{id}}" class="label label-success label-as-badge">
+                                        {{upVoteCount}}
+                                    </span>
 
                                 <img class="media-object" onclick="javascript:downVoteThisIdea({{id}});"
                                      src="/images/hate.png">
-                                    <span class="label label-danger label-as-badge"
-                                          style="color: @brand-success;">12</span>
+                                    <span id="downvote_{{id}}" class="label label-danger label-as-badge">
+                                        {{downVoteCount}}
+                                    </span>
                             </div>
                         </div>
                         <div class="media-body form-control">
@@ -67,10 +69,15 @@
 <script>
     function upVoteThisIdea(ideaId) {
         $.get("/" + ideaId + "/votelike", function (data) {
+            $("#upvote_" + ideaId).text(data.upVoteCount);
+            $("#downvote_" + ideaId).text(data.downVoteCount);
         });
+        console.log("logging");
     }
     function downVoteThisIdea(ideaId) {
         $.get("/" + ideaId + "/votehate", function (data) {
+            $("#upvote_" + ideaId).text(data.upVoteCount);
+            $("#downvote_" + ideaId).text(data.downVoteCount);
         });
     }
 </script>

@@ -14,12 +14,16 @@ public class Idea {
     private String title;
     private String description;
     private boolean approved;
+    private int upVoteCount;
+    private int downVoteCount;
 
     public Idea(String author, String title, String description) {
         this.author = author;
         this.title = title;
         this.description = description;
         this.approved = false;
+        this.upVoteCount = 0;
+        this.downVoteCount = 0;
     }
 
     public Idea() {
@@ -64,4 +68,20 @@ public class Idea {
 	public boolean isApproved() {
 		return approved;
 	}
+
+    public int getUpVoteCount() {
+        return upVoteCount;
+    }
+
+    public void setUpVoteCount(int upVoteCount) {
+        this.upVoteCount = upVoteCount;
+    }
+
+    public int getDownVoteCount() {
+        return downVoteCount;
+    }
+
+    public void setDownVoteCount(int downVoteCount) {
+        this.downVoteCount = downVoteCount;
+    }
 }

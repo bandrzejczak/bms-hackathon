@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.com.bms.event.EventDispatcher;
 import pl.com.bms.event.IdeaApproved;
+import pl.com.bms.event.IdeaCreated;
 import pl.com.bms.shared.Idea;
 import pl.com.bms.shared.IdeaRepository;
 
@@ -29,5 +30,15 @@ public class IdeaService {
         ideaRepository.save(idea);
 
         eventDispatcher.dispatch(new IdeaApproved(idea));
+    }
+
+    public Idea createNew(Idea idea) {
+        Idea createdIdea = ideaRepository.save(idea);
+        eventDispatcher.dispatch(new IdeaCreated(createdIdea));
+        return createdIdea;
+    }
+
+    public Idea get(String ideaId) {
+        return ideaRepository.findOne(ideaId);
     }
 }

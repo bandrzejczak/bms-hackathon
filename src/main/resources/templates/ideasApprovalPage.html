@@ -28,8 +28,7 @@
 <script>
     function chooseThisIdea(ideaId) {
         console.log(ideaId);
-        $.get("/chooseIdea/" + ideaId, function (data) {
-        });
+        $.get("idea/"+ideaId+"/approve", function(data){});
     }
 </script>
 {{> footer}}

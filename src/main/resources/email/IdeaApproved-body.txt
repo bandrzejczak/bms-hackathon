@@ -1,0 +1,8 @@
+Witaj,
+
+W aplikacji "BMS Hackathon" zaakceptowany został nowy pomysł "{{idea.title}}".
+
+Wkrótce powiadomimy Cię o szczegółach realizacji tego pomysłu.
+
+Z uszanowaniem,
+Aplikacja BMS Hackathon
